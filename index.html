@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NMADA</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>NMADA - Never Missing a Deadline Again!</h1>
+    <h3>Get notifications when an event is added to the clubs you are interested in!</h3>
+    <pre></pre>
+    <label for="clubFilter">Filter by Club:</label>
+    <select id="clubFilter">
+        <option value="all">All Clubs</option>
+        <option value="Pragyaan">Pragyaan</option>
+        <option value="NITTFEST">NITTFEST</option>
+        <option value="Aaveg">Aaveg</option>
+    </select>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Club Name</th>
+                <th>Event Name</th>
+                <th>Event Date</th>
+                <th>Event Time</th>
+                <th>Registration Deadline</th>
+                <th>Registration Link</th>
+            </tr>
+        </thead>
+        <tbody id="eventList">
+        </tbody>
+    </table>
+
+    <!-- <p>Interested Club: <input type="text" id="interestedClub" placeholder="Enter club name"></p>
+    <p>Email ID: <input type="tel" id="EmailID" placeholder="Enter Email"></p>
+    <button onclick="subscribeToClub()">Subscribe</button> -->
+
+    <!-- <form id="addEventForm" action="/add_event" method="post">
+        Club Name: <input type="text" name="club_name" required><br>
+        Event Name: <input type="text" name="event_name" required><br>
+        Event Date: <input type="date" name="event_date" required><br>
+        Event Time: <input type="time" name="event_time" required><br>
+        Registration Deadline: <input type="date" name="registration_deadline" required><br>
+        Registration Link: <input type="url" name="registration_link" required><br>
+        <input type="submit" value="Add Event">
+    </form> -->
+
+
+    <script>
+        // Event data (replace with actual data storage mechanism)
+        let events = [
+            { club: "Pragyaan", name: "Robocon", date: "2024-11-15", time: "10:00 AM", deadline: "2024-11-10", link: "https://pragyaan.org/robocon" },
+            { club: "NITTFEST", name: "Music Night", date: "2024-11-20", time: "7:00 PM", deadline: "2024-11-18", link: "https://nittfest.org/music" },
+            { club: "Aaveg", name: "Literary Fest", date: "2024-11-22", time: "1:00 PM", deadline: "2024-11-19", link: "https://aaveg.org/literary" },
+            // Add more events here
+        ];
+
+        // Function to sort events by registration deadline
+        function sortEventsByDeadline(events) {
+            return events.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+        }
+
+        // Function to display events
+        function displayEvents(filteredEvents) {
+            const eventList = document.getElementById("eventList");
+            eventList.innerHTML = ""; // Clear existing events
+
+            filteredEvents.forEach(event => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${event.club}</td>
+                    <td>${event.name}</td>
+                    <td>${event.date}</td>
+                    <td>${event.time}</td>
+                    <td>${event.deadline}</td>
+                    <td><a href="${event.link}">Register</a></td>
+                `;
+                eventList.appendChild(row);
+            });
+        }
+
+        // Sort events initially
+        const sortedEvents = sortEventsByDeadline(events);
+
+        // Initial display
+        displayEvents(sortedEvents);
+
+        // Update display on filter change
+        document.getElementById("clubFilter").addEventListener("change", function() {
+            const selectedClub = this.value;
+            const filteredEvents = sortedEvents.filter(event => selectedClub === "all" || event.club === selectedClub);
+            displayEvents(filteredEvents);
+        });
+
+        
+
+        // Function to subscribe to a club (replace with actual notification mechanism)
+        // function subscribeToClub() {
+        //     const interestedClub = document.getElementById("interestedClub").value.trim();
+        //     const phoneNumber = document.getElementById("phoneNumber").value.trim();
+
+        //     if (!interestedClub || !phoneNumber) {
+        //         alert("Please enter both interested club and phone number.");
+        //         return;
+        //     }
+
+        //     // Simulate subscription (replace with actual storage)
+        //     console.log(`Subscribed to club: ${interestedClub}, Phone number: ${phoneNumber}`);
+
+        //     // **Placeholder for actual notification logic**
+        //     // Send notification (e.g., SMS, email) 
+
+        //     alert(`Successfully subscribed to ${interestedClub}!`); 
+        // }
+    </script>
+
+Click here to select the clubs and get notifications <button onclick="window.location.href='https://forms.gle/mf1dbMMjwromp5fM8';">Click</button>
+
+<pre>
+</pre>
+
+<h2>Happening Now</h2>
+    <h3>Current Fest : Pragyan'25</h3>
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>Date</th>
+            <th>Event Name</th>
+            <th>Link</th>
+        </tr>
+        <tr>
+            <td>10:00 AM</td>
+            <td>2025-02-20</td>
+            <td>Guest Lecture</td>
+            <td><a href="#">Join</a></td>
+        </tr>
+        <tr>
+            <td>02:00 PM</td>
+            <td>2025-02-21</td>
+            <td>Workshop on AI</td>
+            <td><a href="#">Register</a></td>
+        </tr>
+        <tr>
+            <td>06:30 PM</td>
+            <td>2025-02-22</td>
+            <td>Proshow Night</td>
+            <td><a href="#">More Info</a></td>
+        </tr>
+    </table>
+
+
+</body>
+</html>
