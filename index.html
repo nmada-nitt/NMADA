@@ -36,11 +36,20 @@
         border-collapse: collapse;
     }
     
-    th, td {
+    th{
+        text-align: center;
+        vertical-align: middle;
+        padding: 8px;
+        text-align: left;
+        border: 0px solid #ddd;
+    }
+
+    td {
         padding: 8px;
         text-align: left;
         border: 1px solid #ddd;
     }
+
     
     /* Convert to card layout on small screens */
     @media (max-width: 600px) {
@@ -100,12 +109,14 @@
     <table>
         <thead>
             <tr>
-                <th>Event Name</th>
-                <th>Club Name</th>
-                <th>Event Date</th>
-                <th>Event Time</th>
-                <th>Registration Deadline</th>
-                <th>Registration Link</th>
+                <th><pre>     Event Name</pre></th>
+                <th><pre>               Organizer</pre></th>
+                <th><pre>               Date</pre></th>
+                <th><pre>     Time</pre></th>
+                <th><pre>      Deadline</pre></th>
+                <th>
+                    <pre>Reg.Link</pre>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -135,7 +146,7 @@
                         <td><a href="https://unstop.com/competitions/latent-query-pragyan25-national-institute-of-technology-nit-tiruchirappalli-1407043?lb=MFD36Tas&utm_medium=Share&utm_source=shortUrl">Register</a></td>
                     </tr>
                     <tr>
-                        <td>Sangam and Ingenium (Final Round)</td>
+                        <td>Sangam and Ingenium</td>
                         <td>ESI</td>
                         <td>22-02-25</td>
                         <td>09:00 - 17:00</td>
